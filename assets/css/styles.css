@@ -608,6 +608,28 @@ svg:where(:not(.sprite)){
 }
 .toast.show{ opacity:1; visibility:visible; transform:translateY(0); }
 
+.form-note a,.footer-bottom a{ text-decoration:underline; text-underline-offset:2px; transition:color .2s; }
+.form-note a:hover,.footer-bottom a:hover{ color:var(--brand); }
+
+/* ---------------- Páginas avulsas (404, privacidade) ---------------- */
+.page-head .header-inner{ justify-content:space-between; }
+.page-404{ min-height:calc(100vh - var(--header-h) - 60px); display:grid; place-items:center; text-align:center; padding:60px 0; }
+.page-404 .code{ font-size:clamp(64px,12vw,110px); font-weight:700; line-height:1; color:var(--brand-soft); }
+.page-404 h1{ font-size:clamp(26px,3.4vw,34px); margin-top:8px; }
+.page-404 p{ margin:14px auto 28px; max-width:440px; color:var(--muted); }
+.page-404 .btn{ margin:4px; }
+
+.legal{ max-width:760px; }
+.legal h1{ font-size:clamp(28px,3.6vw,38px); }
+.legal .updated{ margin-top:10px; font-size:13.4px; color:var(--muted-2); }
+.legal h2{ font-size:20px; margin:38px 0 12px; }
+.legal p,.legal li{ font-size:15.4px; line-height:1.7; }
+.legal p + p,.legal ul + p{ margin-top:12px; }
+.legal ul{ display:grid; gap:8px; margin-top:12px; }
+.legal li{ position:relative; padding-left:18px; }
+.legal li::before{ content:''; position:absolute; left:0; top:11px; width:6px; height:6px; border-radius:50%; background:var(--brand); }
+.legal a{ color:var(--brand); text-decoration:underline; text-underline-offset:2px; }
+
 /* =========================================================
    Responsivo
    ========================================================= */

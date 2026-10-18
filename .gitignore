@@ -13,6 +13,10 @@ Desktop.ini
 *.swp
 *~
 
+# Imagens em alta resolução (~18 MB): ficam só na máquina local.
+# Tudo que está no repo é publicado pelo GitHub Pages com URL pública.
+assets/img/originais/
+
 # Logs e temporários
 *.log
 _measure.html
