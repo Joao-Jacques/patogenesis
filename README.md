@@ -1,7 +1,7 @@
 # Patogenesis — site institucional
 
 Site estático de uma página do Patogenesis Laboratório de Diagnóstico Veterinário,
-publicado em **https://www.patogenesis.com** pelo GitHub Pages.
+publicado em **https://www.patogenesis.com.br** pelo GitHub Pages.
 
 Não tem build: HTML, CSS e JS puros. Todo push na `main` vai direto para o ar.
 
@@ -53,7 +53,7 @@ e-mail de ativação para esse endereço: até ele ser confirmado, as mensagens 
 ## Checklist de publicação
 
 - [ ] DNS: registros A/AAAA do domínio raiz apontando para o GitHub Pages e CNAME de `www` para `<usuario>.github.io`
-- [ ] Settings → Pages: domínio `www.patogenesis.com` e **Enforce HTTPS** ligado
+- [ ] Settings → Pages: domínio `www.patogenesis.com.br` e **Enforce HTTPS** ligado
 - [ ] Settings → Pages: verificar o domínio (evita sequestro do subdomínio)
 - [ ] Ativar o FormSubmit (enviar uma mensagem de teste e confirmar o e-mail)
 - [ ] Google Search Console: verificar o domínio e enviar `sitemap.xml`
