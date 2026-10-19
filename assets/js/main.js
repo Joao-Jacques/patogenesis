@@ -197,7 +197,6 @@
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
     closeNav();
-    closeModal();
     closeInfo();
   });
 
@@ -387,42 +386,7 @@
   }
 
   /* =======================================================
-     8) MODAL — SOLICITAR EXAME
-     ======================================================= */
-  const modal = $('#modal');
-  const examForm = $('#examForm');
-  const modalSuccess = $('#modalSuccess');
-  let lastFocused = null;
-
-  function openModal(preset) {
-    lastFocused = document.activeElement;
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('no-scroll');
-    examForm.hidden = false;
-    modalSuccess.hidden = true;
-    if (preset === 'convenio') {
-      const chip = $('#examChips input[value="Convênio"]');
-      if (chip) chip.checked = true;
-    }
-    setTimeout(() => $('#mf-nome').focus(), 60);
-  }
-  function closeModal() {
-    if (!modal.classList.contains('open')) return;
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('no-scroll');
-    if (lastFocused) lastFocused.focus();
-  }
-
-  $$('[data-open-modal]').forEach((b) => b.addEventListener('click', () => {
-    closeNav();
-    openModal(b.dataset.preset);
-  }));
-  $$('[data-close-modal]').forEach((b) => b.addEventListener('click', closeModal));
-
-  /* =======================================================
-     9) MODAL — DETALHE (exames / materiais / casos)
+     8) MODAL — DETALHE (exames / materiais / casos)
      ======================================================= */
   const infoModal = $('#infoModal');
 
@@ -531,7 +495,7 @@
     if (!infoModal.classList.contains('open')) return;
     infoModal.classList.remove('open');
     infoModal.setAttribute('aria-hidden', 'true');
-    if (!modal.classList.contains('open')) document.body.classList.remove('no-scroll');
+    document.body.classList.remove('no-scroll');
   }
 
   $$('[data-exam-open]').forEach((b) =>
@@ -560,7 +524,7 @@
   });
 
   /* =======================================================
-     10) FORMULÁRIOS — máscara e validação
+     9) FORMULÁRIO DE CONTATO — máscara e validação
      ======================================================= */
   function maskPhone(v) {
     const d = v.replace(/\D/g, '').slice(0, 11);
@@ -607,12 +571,6 @@
     $$('input[required], textarea[required], select[required]', form).forEach((inp) => {
       if (!validateField(inp)) ok = false;
     });
-    const chipsField = $('#examChips')?.closest('.field');
-    if (form === examForm && chipsField) {
-      const any = $$('#examChips input:checked').length > 0;
-      setError(chipsField, any ? '' : 'Selecione ao menos um exame.');
-      if (!any) ok = false;
-    }
     if (!ok) {
       const first = $('.field.invalid', form);
       if (first) {
@@ -623,30 +581,6 @@
     }
     return ok;
   }
-
-  wireValidation(examForm);
-  $$('#examChips input').forEach((c) => c.addEventListener('change', () => {
-    const f = $('#examChips').closest('.field');
-    if (f.classList.contains('invalid') && $$('#examChips input:checked').length) setError(f, '');
-  }));
-
-  examForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (!validateForm(examForm)) return;
-    const btn = $('button[type="submit"]', examForm);
-    const original = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = 'Enviando...';
-    // TODO: trocar pelo envio real (fetch para o backend / e-mail / CRM)
-    setTimeout(() => {
-      btn.disabled = false;
-      btn.textContent = original;
-      examForm.hidden = true;
-      modalSuccess.hidden = false;
-      examForm.reset();
-      $$('.field.invalid', examForm).forEach((f) => f.classList.remove('invalid'));
-    }, 900);
-  });
 
   // FormSubmit (formsubmit.co) encaminha a mensagem por e-mail, sem backend.
   // O primeiro envio manda um e-mail de ativacao ao laboratorio; ate o link
@@ -690,7 +624,7 @@
   }
 
   /* =======================================================
-     11) ACESSAR MATERIAIS (placeholder)
+     10) ACESSAR MATERIAIS (placeholder)
      Solicitacao e resultados agora sao links diretos para o sistema
      externo (ideainfo) no HTML. So os materiais seguem sem destino.
      ======================================================= */
@@ -702,13 +636,13 @@
   });
 
   /* =======================================================
-     12) VOLTAR AO TOPO
+     11) VOLTAR AO TOPO
      ======================================================= */
   const toTop = $('#backToTop');
   toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   /* =======================================================
-     13) SCROLL HANDLER ÚNICO
+     12) SCROLL HANDLER ÚNICO
      ======================================================= */
   let ticking = false;
   window.addEventListener('scroll', () => {
@@ -723,7 +657,7 @@
   }, { passive: true });
 
   /* =======================================================
-     14) MISC
+     13) MISC
      ======================================================= */
   $('#year').textContent = new Date().getFullYear();
   spy();

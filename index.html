@@ -125,7 +125,6 @@
     <symbol id="i-quote" viewBox="0 0 24 24"><path d="M9.5 6.5c-3 1-4.8 3.4-4.8 6.6V18h5.6v-5.4H7.1c0-2 .9-3.3 2.9-4zM19.8 6.5c-3 1-4.8 3.4-4.8 6.6V18h5.6v-5.4h-3.2c0-2 .9-3.3 2.9-4z" fill="currentColor" stroke="none"/></symbol>
     <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.2 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.7l5.9-.8z" fill="currentColor" stroke="none"/></symbol>
     <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="M6 11l6-6 6 6"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
     <symbol id="i-dot" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="currentColor" stroke="none"/></symbol>
   </defs>
 </svg>
@@ -760,85 +759,6 @@
   <svg><use href="#i-whatsapp"/></svg>
 </a>
 <button class="fab top" id="backToTop" aria-label="Voltar ao topo"><svg><use href="#i-arrow-up"/></svg></button>
-
-<!-- ============ MODAL: SOLICITAR EXAME ============ -->
-<div class="modal" id="modal" aria-hidden="true">
-  <div class="modal-backdrop" data-close-modal></div>
-  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <button class="modal-close" data-close-modal aria-label="Fechar"><svg><use href="#i-close"/></svg></button>
-
-    <div class="modal-head">
-      <span class="eyebrow accent">Convênio</span>
-      <h3 id="modalTitle">Falar sobre convênio</h3>
-      <p>Preencha os dados abaixo e retornamos com uma proposta em até 1 dia útil.</p>
-    </div>
-
-    <form id="examForm" novalidate>
-      <div class="field-row">
-        <div class="field">
-          <label for="mf-nome">Nome do veterinário *</label>
-          <input id="mf-nome" name="nome" type="text" required placeholder="Dra. Ana Souza" />
-          <span class="err"></span>
-        </div>
-        <div class="field">
-          <label for="mf-crmv">CRMV</label>
-          <input id="mf-crmv" name="crmv" type="text" placeholder="CRMV-DF 0000" />
-        </div>
-      </div>
-
-      <div class="field-row">
-        <div class="field">
-          <label for="mf-email">E-mail *</label>
-          <input id="mf-email" name="email" type="email" required placeholder="voce@clinica.com" />
-          <span class="err"></span>
-        </div>
-        <div class="field">
-          <label for="mf-tel">Telefone / WhatsApp *</label>
-          <input id="mf-tel" name="telefone" type="tel" inputmode="numeric" required placeholder="(61) 90000-0000" />
-          <span class="err"></span>
-        </div>
-      </div>
-
-      <div class="field">
-        <label for="mf-clinica">Clínica / Hospital</label>
-        <input id="mf-clinica" name="clinica" type="text" placeholder="Nome do estabelecimento" />
-      </div>
-
-      <fieldset class="field">
-        <legend>Exames de interesse *</legend>
-        <div class="chips" id="examChips">
-          <label class="chip"><input type="checkbox" name="exame" value="Citopatologia" /><span>Citopatologia</span></label>
-          <label class="chip"><input type="checkbox" name="exame" value="Histopatologia" /><span>Histopatologia</span></label>
-          <label class="chip"><input type="checkbox" name="exame" value="Imuno-histoquímica" /><span>Imuno-histoquímica</span></label>
-          <label class="chip"><input type="checkbox" name="exame" value="Necropsia" /><span>Necropsia</span></label>
-          <label class="chip"><input type="checkbox" name="exame" value="Convênio" /><span>Convênio</span></label>
-        </div>
-        <span class="err"></span>
-      </fieldset>
-
-      <div class="field">
-        <label for="mf-obs">Observações do caso</label>
-        <textarea id="mf-obs" name="obs" rows="3" placeholder="Espécie, raça, idade, histórico e suspeita clínica."></textarea>
-      </div>
-
-      <div class="modal-actions">
-        <button type="button" class="btn btn-outline" data-close-modal>Cancelar</button>
-        <button type="submit" class="btn btn-primary">Enviar solicitação</button>
-      </div>
-    </form>
-
-    <div class="modal-success" id="modalSuccess" hidden>
-      <span class="ok"><svg><use href="#i-check"/></svg></span>
-      <h3>Solicitação enviada!</h3>
-      <p>Recebemos seus dados. Em breve nossa equipe entra em contato para falar sobre o convênio.</p>
-      <div class="modal-actions center">
-        <!-- wa.me sem o 9º dígito: o perfil só resolve assim. O tel: mantém o 9. -->
-        <a class="btn btn-primary" href="https://wa.me/556195156979" target="_blank" rel="noopener">Adiantar pelo WhatsApp <svg class="i"><use href="#i-whatsapp"/></svg></a>
-        <button class="btn btn-outline" data-close-modal>Fechar</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ============ MODAL: DETALHE (exames / materiais / casos) ============ -->
 <div class="modal" id="infoModal" aria-hidden="true">
