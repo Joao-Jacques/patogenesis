@@ -49,12 +49,3 @@ os links `tel:` mantêm o 9.
 Enviado pelo [FormSubmit](https://formsubmit.co) para `patogenesislab@gmail.com`
 (`CONTACT_ENDPOINT` em `assets/js/main.js`). No primeiro envio, o FormSubmit manda um
 e-mail de ativação para esse endereço: até ele ser confirmado, as mensagens não chegam.
-
-## Checklist de publicação
-
-- [ ] DNS: registros A/AAAA do domínio raiz apontando para o GitHub Pages e CNAME de `www` para `<usuario>.github.io`
-- [ ] Settings → Pages: domínio `www.patogenesis.com.br` e **Enforce HTTPS** ligado
-- [ ] Settings → Pages: verificar o domínio (evita sequestro do subdomínio)
-- [ ] Ativar o FormSubmit (enviar uma mensagem de teste e confirmar o e-mail)
-- [ ] Google Search Console: verificar o domínio e enviar `sitemap.xml`
-- [ ] Testar a prévia do link no WhatsApp e no [validador de dados estruturados](https://validator.schema.org/)
